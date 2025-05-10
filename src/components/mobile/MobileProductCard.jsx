@@ -9,7 +9,7 @@ const MobileProductCard = ({product, currentIndex, index}) => {
             }`}
         >
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-48 object-cover"/>
+                <img src={product.image} alt={product.name} className="w-auto h-50 mx-auto object-cover"/>
                 <div className="p-4">
                     <div className="flex justify-between items-center mb-2">
                         <h3 className="text-xl font-bold">{product.name}</h3>
