@@ -15,7 +15,7 @@ function PizzeriaMenu() {
     return (
         <div className="bg-amber-50 min-h-screen p-4 md:p-8 w-full overflow-x-hidden">
             <header className="mb-8 text-center">
-                <h1 className="text-3xl md:text-4xl font-bold text-red-800 mb-2">Сара С</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-red-700 mb-2">Пицерија Сара С</h1>
                 <p className="text-gray-600 italic">Врвен квалитет</p>
             </header>
 
