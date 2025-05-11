@@ -6,7 +6,7 @@ const ProductsSection = ({ title, items }) => {
 
     return (
         <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-6 text-center text-red-700">{title}</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center text-red-700 dark:text-red-300">{title}</h2>
             {isMobile ? (
                 <MobileProductCardSlider items={items} />
             ) : (
