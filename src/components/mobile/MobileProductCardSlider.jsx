@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import MobileProductCard from "./MobileProductCard.jsx";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const MobileProductCardSlider = ({ items }) => {
+const MobileProductCardSlider = ({ products }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const touchStartX = useRef(0);
     const touchEndX = useRef(0);
@@ -11,13 +11,13 @@ const MobileProductCardSlider = ({ items }) => {
 
     const goToPrevious = () => {
         setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? items.length - 1 : prevIndex - 1
+            prevIndex === 0 ? products.length - 1 : prevIndex - 1
         );
     };
 
     const goToNext = () => {
         setCurrentIndex((prevIndex) =>
-            prevIndex === items.length - 1 ? 0 : prevIndex + 1
+            prevIndex === products.length - 1 ? 0 : prevIndex + 1
         );
     };
 
@@ -65,7 +65,7 @@ const MobileProductCardSlider = ({ items }) => {
     return (
         <div className="relative w-full h-125 mb-8" ref={sliderRef}>
             <div className="relative w-full h-full">
-                {items.map((product, index) => (
+                {products.map((product, index) => (
                     <MobileProductCard
                         key={product.id}
                         product={product}
@@ -96,7 +96,7 @@ const MobileProductCardSlider = ({ items }) => {
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-2">
-                {items.map((_, index) => (
+                {products.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentIndex(index)}

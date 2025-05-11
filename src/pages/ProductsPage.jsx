@@ -28,18 +28,18 @@ function PizzeriaMenu() {
                     {data && (
                         <>
                             {data.food && data.food.length > 0 && (
-                                <ProductsSection title="Храна" items={data.food}/>
+                                <ProductsSection title="Храна" products={data.food}/>
                             )}
 
                             {data.drinks && data.drinks.length > 0 && (
-                                <ProductsSection title="Пијалоци" items={data.drinks}/>
+                                <ProductsSection title="Пијалоци" products={data.drinks}/>
                             )}
                         </>
                     )}
                 </div>
             </div>
 
-            <footer className="mt-12 text-center text-gray-500 dark:text-gray-300 text-sm align-end shadow-inner">
+            <footer className="mt-12 text-center text-gray-500 dark:text-gray-300 text-sm align-end">
                 <p>© 2024 Пицерија Сара С.</p>
             </footer>
         </div>
