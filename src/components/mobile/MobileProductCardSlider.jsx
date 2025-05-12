@@ -8,6 +8,7 @@ const MobileProductCardSlider = ({ products }) => {
     const touchEndX = useRef(0);
     const minSwipeDistance = 50;
     const sliderRef = useRef(null);
+    const isSwiping = useRef(false);
 
     const goToPrevious = () => {
         setCurrentIndex((prevIndex) =>
@@ -23,29 +24,35 @@ const MobileProductCardSlider = ({ products }) => {
 
     const handleTouchStart = (e) => {
         touchStartX.current = e.touches[0].clientX;
+        isSwiping.current = false; // reset at start
     };
 
     const handleTouchMove = (e) => {
-        touchEndX.current = e.touches[0].clientX;
+        const moveX = e.touches[0].clientX;
+        const diff = Math.abs(moveX - touchStartX.current);
+        if (diff > minSwipeDistance) {
+            isSwiping.current = true;
+            touchEndX.current = moveX;
+        }
     };
 
     const handleTouchEnd = (e) => {
+        if (!isSwiping.current) return;
+
         const distance = touchStartX.current - touchEndX.current;
 
+        // Ignore if on a button
         if (e.target.tagName.toLowerCase() === 'button' || e.target.closest('button')) {
             return;
         }
 
-        if (Math.abs(distance) > minSwipeDistance) {
-            if (distance > 0) {
-                // Swiped left, go to next
-                goToNext();
-            } else {
-                // Swiped right, go to previous
-                goToPrevious();
-            }
+        if (distance > 0) {
+            goToNext(); // Swiped left
+        } else {
+            goToPrevious(); // Swiped right
         }
     };
+
 
     useEffect(() => {
         const sliderElement = sliderRef.current;
