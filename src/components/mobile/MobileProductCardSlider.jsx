@@ -70,7 +70,7 @@ const MobileProductCardSlider = ({ products }) => {
     }, []);
 
     return (
-        <div className="relative w-full h-125 mb-8" ref={sliderRef}>
+        <div className="relative w-full h-105 mb-8" ref={sliderRef}>
             <div className="relative w-full h-full">
                 {products.map((product, index) => (
                     <MobileProductCard
@@ -82,7 +82,7 @@ const MobileProductCardSlider = ({ products }) => {
                 ))}
             </div>
 
-            <div className="absolute left-2 top-3/8 -translate-y-1/2 z-10">
+            <div className="absolute left-2 top-3/9 -translate-y-1/2 z-10">
                 <button
                     onClick={goToPrevious}
                     className="bg-white dark:bg-gray-700 border opacity-80 rounded-md py-6 shadow-md hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
@@ -92,7 +92,7 @@ const MobileProductCardSlider = ({ products }) => {
                 </button>
             </div>
 
-            <div className="absolute right-2 top-3/8 -translate-y-1/2 z-10">
+            <div className="absolute right-2 top-3/9 -translate-y-1/2 z-10">
                 <button
                     onClick={goToNext}
                     className="bg-white dark:bg-gray-700 border opacity-80 rounded-md py-6 shadow-md hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
@@ -102,14 +102,17 @@ const MobileProductCardSlider = ({ products }) => {
                 </button>
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-2">
+            <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center h-1 space-x-2 z-10">
                 {products.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentIndex(index)}
-                        className={`w-3 h-3 rounded-full ${
-                            currentIndex === index ? 'bg-red-600 dark:bg-red-400' : 'bg-gray-300'
+                        className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+                            currentIndex === index
+                                ? 'bg-red-600 dark:bg-red-400 scale-125'
+                                : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                         }`}
+                        aria-label={`Go to product ${index + 1}`}
                     />
                 ))}
             </div>
